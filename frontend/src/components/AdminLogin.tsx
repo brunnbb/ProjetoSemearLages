@@ -99,12 +99,6 @@ export function AdminLogin({ onBack, onLogin }: AdminLoginProps) {
                 {isLoading ? 'Entrando...' : 'Entrar'}
               </Button>
             </form>
-            
-            <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-              <p className="text-xs text-gray-500 text-center">
-                Demo: admin@projetosemear.org.br / admin123
-              </p>
-            </div>
           </CardContent>
         </Card>
       </div>
