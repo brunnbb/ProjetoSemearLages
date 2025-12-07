@@ -50,3 +50,5 @@ uv.lock
 .DS_Store
 Thumbs.db
 
+# DOCKER
+secrets/
