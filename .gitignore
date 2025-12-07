@@ -26,6 +26,10 @@ wheels/
 .installed.cfg
 *.egg
 
+# uv
+.venv/
+uv.lock
+
 # Database
 *.db
 *.sqlite

@@ -4,7 +4,7 @@ API FastAPI para gerenciamento do Projeto Semear Lages.
 
 ## Instalação
 
-1. **Instale o PostgreSQL 18** (veja `DATABASE_SETUP.md` para instruções detalhadas)
+1. **Instale o PostgreSQL 18** 
 
 2. **Crie o banco de dados:**
 ```bash
@@ -12,17 +12,39 @@ psql -U postgres
 CREATE DATABASE semear;
 ```
 
-3. **Instale as dependências Python:**
+3. **Instale o uv** (se ainda não tiver):
+```bash
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# Ou via pip
+pip install uv
+```
+
+4. **Instale as dependências Python com uv:**
+```bash
+# No diretório backend
+uv sync
+```
+
+**Alternativa:** Se preferir usar pip tradicional:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Configure o arquivo `.env`** com a URL do PostgreSQL:
+5. **Configure o arquivo `.env`** com a URL do PostgreSQL:
 ```env
 DATABASE_URL=postgresql://postgres:sua_senha@localhost:5432/semear
 ```
 
-5. **Execute o servidor:**
+6. **Execute o servidor:**
+
+**Com uv:**
+```bash
+uv run uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**Ou com Python tradicional:**
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```

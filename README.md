@@ -67,12 +67,29 @@
 ### Backend
 
 1. Instalar dependências:
+
+**Com uv (recomendado):**
+```bash
+cd backend
+# Instalar uv se ainda não tiver
+# Windows: powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+uv sync
+```
+
+**Ou com pip tradicional:**
 ```bash
 cd backend
 pip install -r requirements.txt
 ```
 
 2. Executar servidor:
+
+**Com uv:**
+```bash
+uv run uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**Ou com Python tradicional:**
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
