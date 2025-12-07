@@ -28,7 +28,6 @@ wheels/
 
 # uv
 .venv/
-uv.lock
 
 # Database
 *.db
