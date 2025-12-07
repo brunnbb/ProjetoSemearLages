@@ -6,11 +6,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./semear.db")
+# PostgreSQL connection URL format: postgresql://user:password@host:port/database
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@localhost:5432/semear"
+)
 
+# Create engine with PostgreSQL-specific settings
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
+    pool_pre_ping=True,  # Verify connections before using them
+    pool_size=10,  # Number of connections to maintain
+    max_overflow=20,  # Maximum number of connections to create beyond pool_size
+    echo=False  # Set to True for SQL query logging
 )
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
