@@ -14,14 +14,6 @@ services:
     networks:
       - app_net
 
-  frontend:
-    build: ./frontend
-    container_name: vite_frontend
-    depends_on:
-      - backend
-    networks:
-      - app_net
-
   nginx:
     image: nginx:stable
     container_name: nginx_app
@@ -32,7 +24,6 @@ services:
       - ./frontend/dist:/var/www/frontend
     depends_on:
       - backend
-      - frontend
     networks:
       - app_net
 
